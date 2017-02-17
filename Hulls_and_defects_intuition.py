@@ -78,4 +78,44 @@ for i in range(defects.shape[0]):
 	cv2.circle(im,(far[0],far[1]),5,(0,0,0),-1)
 	cv2.imshow('dot1',im)
 	cv2.waitKey(0)
+	
+image,contours, hierarchy = cv2.findContours(thresh1,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+
+cnt = min(contours, key = lambda x: cv2.arcLength(x,True))
+
+x,y,w,h = cv2.boundingRect(cnt)	
+	
+x=cnt.shape[0]  #x nnumber of points in the contour
+y=cnt.shape[1] # y dont know what it is actually
+z=cnt.shape[2] #z is used to define coordinates of the points in the contour
+
+for i in range(0,x):
+	c=cnt[i][0][0]
+	b=cnt[i][0][1]
+
+	cv2.circle(im,(c,b),5,(0,0,255),-1)
+	cv2.imshow('dot1',im)
+	cv2.waitKey(0)
+
+#############################
+
+
+#cnt = min(contours, key = lambda x: cv2.arcLength(x,True))
+
+#x,y,w,h = cv2.boundingRect(cnt)
+
+
+
+
+
+#im=cv2.drawContours(im, [cnt],0, (255,255,0),3)
+#cv2.rectangle(im,(x,y),(x+w,y+h),(0,0,255),0)
+
+#cv2.imshow('im',im)
+#cv2.waitKey(0)
+
+
+
+
+
 

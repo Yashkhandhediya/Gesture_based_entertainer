@@ -1,0 +1,21 @@
+import cv2
+import numpy as np
+from time import sleep
+
+sleep(3)
+
+img=cv2.imread('yash.png')
+
+
+hsv=cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
+
+
+lower_blue=np.array([100,188,36])
+upper_blue=np.array([112,200,48])
+
+
+mask=cv2.inRange(hsv, lower_blue, upper_blue)
+
+cv2.imshow('img',mask)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
